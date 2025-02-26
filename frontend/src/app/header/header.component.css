@@ -1,0 +1,7 @@
+/* Banner dentro do header */
+ .banner h1 {
+    font-size: 24px;
+    color: var(--accent-color); /* Dourado para destaque */
+}
+
+

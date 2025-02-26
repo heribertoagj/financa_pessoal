@@ -1,0 +1,30 @@
+<div class="register-container container">
+  <h2>Register</h2>
+  <hr>
+  <form (submit)="onRegister()">
+    <div class="form-row">
+      <input type="text" [(ngModel)]="name" placeholder="Nome Completo" name="name"
+        [ngClass]="{'error-border': nameError}" required>
+      <input type="email" [(ngModel)]="email" placeholder="E-mail" name="email" [ngClass]="{'error-border': emailError}"
+        required>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="login" placeholder="Login" name="login" [ngClass]="{'error-border': loginError}"
+        required>
+    </div>
+    <input type="password" [(ngModel)]="password" placeholder="Senha" name="password"
+      [ngClass]="{'error-border': passwordError}" required>
+    <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirme a Senha" name="confirmPassword"
+      [ngClass]="{'error-border': confirmPasswordError}" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <!-- Mensagem de erro -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Mensagem de sucesso -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+</div>

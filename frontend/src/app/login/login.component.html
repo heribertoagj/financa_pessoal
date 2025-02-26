@@ -1,0 +1,32 @@
+<div class="login-container container">
+  <h2>Bem-vindo à TTech</h2>
+
+  <form (submit)="onLogin()">
+    <!-- Campo de Usuário -->
+    <div>
+      <input type="text" placeholder="Usuário" [(ngModel)]="username" name="username" [ngClass]="{'error-border': usernameError}" required>
+      <!-- <div *ngIf="usernameError" class="error-text">{{ usernameError }}</div> -->
+    </div>
+
+    <!-- Campo de Senha -->
+    <div>
+      <input type="password" placeholder="Senha" [(ngModel)]="password" name="password" [ngClass]="{'error-border': passwordError}" required>
+      <!-- <div *ngIf="passwordError" class="error-text">{{ passwordError }}</div> -->
+    </div>
+
+    <button type="submit">Entrar</button>
+  </form>
+
+  <a href="#">Esqueceu sua senha?</a>
+  <a routerLink="/register">Não tem conta? Cadastre-se</a>
+
+  <!-- Mensagem de erro -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Mensagem de sucesso -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+</div>

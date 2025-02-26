@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:8.0   # Imagem oficial do MySQL (versão 8.0)
+    container_name: mysql-dev-container
+    environment:
+      MYSQL_ROOT_PASSWORD: tech1234 # Senha do usuário root do MySQL
+      MYSQL_DATABASE: fp   	    # Banco de dados inicial
+      MYSQL_USER: admin             # Nome de usuário adicional
+      MYSQL_PASSWORD: admin         # Senha para o usuário adicional
+    ports:
+      - "3316:3306"                 # Mapeando a porta 3306 do container para a porta 3306 da máquina host
+    volumes:
+      - mysql-dev-data:/var/lib/mysql  # Persistência dos dados do banco de dados
+    networks:
+      - mysql-dev-network
+
+volumes:
+  mysql-dev-data:
+    driver: local
+
+networks:
+  mysql-dev-network:
+    driver: bridge

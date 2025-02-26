@@ -1,0 +1,27 @@
+/* Container principal */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  height: 5vh; /* Ocupa toda a altura da tela */
+  background-color: var(--secondary-color); /* Cor de fundo */
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh; /* Ocupa toda a altura da tela */
+    background-color: var(--secondary-color); /* Cor de fundo */
+  }
+
+/* Estilo para o header */
+.header {
+  background-color: var(--primary-color); /* Azul escuro */
+  text-align: center;
+  color: white;
+}
+/* Estilo para a área central */
+.content {
+    margin-top: 16px; /* Reduz a margem superior para alinhar mais próximo do header */
+    padding: 5px;
+    flex-grow: 1; /* Faz com que a área de conteúdo ocupe o espaço restante */
+    overflow-y: auto; /* Caso o conteúdo seja maior que a tela */
+}

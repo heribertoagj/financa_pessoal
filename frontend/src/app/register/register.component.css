@@ -1,0 +1,14 @@
+.register-container {
+    max-width: 500px;
+}
+
+/* Add the form-row class */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    
+  }
+  .form-row input {
+    width: 100%;
+  }

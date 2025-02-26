@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="menu-container" *ngIf="isAuthenticated">
+        <header class="header">
+            <app-header></app-header>
+        </header>
+    </div>
+    
+    <div class="main-container">
+        <main class="content">
+            <router-outlet></router-outlet>
+        </main>
+    
+    </div>    
+</div>
+
