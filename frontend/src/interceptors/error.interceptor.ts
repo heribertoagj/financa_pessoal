@@ -16,7 +16,6 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
         router.navigate(['/login'],{queryParams: {message: "Login do usuário expirou"}})
         
       }
-
-      return throwError(error);
+      return throwError(()=> new Error(error.message));
   }));
 };

@@ -43,9 +43,7 @@ export class LoginComponent implements OnInit {
       .subscribe(() => this.updateErrorMessage());
   }
 
-  ngOnInit(): void { 
-    this.authService.logout()
-  }
+  ngOnInit(): void {   }
 
   updateErrorMessage() {
     this.usernameErrorMessage.set('');

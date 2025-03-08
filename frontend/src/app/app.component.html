@@ -1,11 +1,11 @@
-<div class="container">
-    <div class="menu-container" *ngIf="isAuthenticated">
+<div class="main-container">
+    <div class="top-container" *ngIf="isAuthenticated">
         <header class="header">
             <app-header></app-header>
         </header>
     </div>
     
-    <div class="main-container">
+    <div class="center-container">
         <main class="content">
             <router-outlet></router-outlet>
         </main>

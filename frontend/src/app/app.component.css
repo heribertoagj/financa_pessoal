@@ -1,27 +1,39 @@
-/* Container principal */
-.menu-container {
+.main-container {
+  /*margin: 0 auto; */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.top-container {
   display: flex;
   flex-direction: column;
-  height: 5vh; /* Ocupa toda a altura da tela */
-  background-color: var(--secondary-color); /* Cor de fundo */
+  height: 15vh;
+  background-color: var(--secondary-color);
+  overflow: visible; 
 }
-.main-container {
-    display: flex;
-    flex-direction: column;
-    height: 90vh; /* Ocupa toda a altura da tela */
-    background-color: var(--secondary-color); /* Cor de fundo */
-  }
 
-/* Estilo para o header */
+.center-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  /* Ocupa toda a altura da tela */
+  background-color: var(--secondary-color);
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse o topo */
+}
+
 .header {
-  background-color: var(--primary-color); /* Azul escuro */
   text-align: center;
   color: white;
 }
+
 /* Estilo para a área central */
 .content {
-    margin-top: 16px; /* Reduz a margem superior para alinhar mais próximo do header */
-    padding: 5px;
-    flex-grow: 1; /* Faz com que a área de conteúdo ocupe o espaço restante */
-    overflow-y: auto; /* Caso o conteúdo seja maior que a tela */
+  margin-top: 16px;
+  padding: 5px;
+  flex-grow: 1;
+  overflow-y: auto;
 }

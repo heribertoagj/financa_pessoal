@@ -1,7 +1,43 @@
-/* Banner dentro do header */
- .banner h1 {
-    font-size: 24px;
-    color: var(--accent-color); /* Dourado para destaque */
+.top {
+    padding: 12px;
+    margin: auto;
 }
 
+.top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.welcome {
+    text-align: left;
+}
+
+/* Banner dentro do header */
+ .welcome h2 {
+    font-size: 20px;
+    color: black;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: left;
+    background-color: var(--primary-color);
+    opacity: 0.9;
+}
+
+.menu button {
+    margin: 0;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.menu button:hover {
+    background-color: var(--secondary-color);
+    color: black;
+    opacity: 0.35;
+}
