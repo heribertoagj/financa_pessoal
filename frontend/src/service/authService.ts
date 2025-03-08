@@ -46,7 +46,6 @@ export class AuthService extends CommonService{
                     let response = result as CommonResponse
                     if (response.code == 200) {
                         let data = result.data as AuthResponse   
-                        alert(data)
                         sessionStorage.setItem(environment.tokenSession, JSON.stringify(data))
                         this.currentUserSubject.next(data)
                     }                

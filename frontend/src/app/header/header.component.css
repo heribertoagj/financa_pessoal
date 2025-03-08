@@ -1,17 +1,29 @@
 .top {
-    padding: 12px;
+    padding: 0px 5px;
     margin: auto;
 }
 
-.top-bar{
+.banner{
+    padding: 5px 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: var(--secondary-color);
 }
 
 .welcome {
+    padding: 0; 
     text-align: left;
 }
+
+.logout button {
+    margin: 0;
+    padding: 0px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--secondary-color);
+    opacity: 0.7;
+ }
 
 /* Banner dentro do header */
  .welcome h2 {
@@ -32,6 +44,8 @@
 .menu button {
     margin: 0;
     padding: 10px;
+    border: none;
+    border-radius: 0;
     background-color: var(--primary-color);
     color: #ffffff;
 }

@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService) {
-    merge(this.username.statusChanges, this.username.valueChanges)
+
+      merge(this.username.statusChanges, this.username.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
@@ -74,8 +75,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home'])
         }
         else {
-          alert(JSON.stringify(result))
-
           Utils.toShowError(this, 'Usuário ou senha inválido!')
         }
 

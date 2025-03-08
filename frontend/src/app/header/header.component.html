@@ -1,15 +1,27 @@
 <div class="top">
-    <div class="top-bar">
+    <div class="banner">
         <div class="welcome">
             <h2>TTech.</h2>
         </div>
         <div class="logout">
-            <a class="mat-btn" href="/logout" class="btn btn-sm">Logout</a>
+            <button mat-icon-button (click)="onLogout()">
+                <mat-icon>logout</mat-icon>
+            </button>
+
         </div>
     </div>
+
     <div class="menu">
         <button mat-button>Dashboard</button>
-        <button mat-button>Receives</button>
-        <button mat-button>Expenses</button>
+        <button mat-button [matMenuTriggerFor]="receivesMenu">Receives</button>
+        <mat-menu #receivesMenu="matMenu" xPosition="before">
+            <button mat-menu-item>Receives</button>
+            <button mat-menu-item>Type</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="expensesMenu">Expenses</button>
+        <mat-menu #expensesMenu="matMenu" xPosition="before">
+            <button mat-menu-item>Expenses</button>
+            <button mat-menu-item>Type</button>
+        </mat-menu>
     </div>
 </div>

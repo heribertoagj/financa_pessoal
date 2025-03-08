@@ -1,6 +1,6 @@
 .main-container {
-  /*margin: 0 auto; */
-  padding: 0.5em;
+  margin: 0 auto; 
+  padding: 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -20,14 +20,13 @@
   display: flex;
   flex-direction: column;
   height: 80vh;
-  /* Ocupa toda a altura da tela */
   background-color: var(--secondary-color);
   overflow: hidden; /* Garante que o conteúdo não ultrapasse o topo */
 }
 
 .header {
   text-align: center;
-  color: white;
+  color: gray;
 }
 
 /* Estilo para a área central */
