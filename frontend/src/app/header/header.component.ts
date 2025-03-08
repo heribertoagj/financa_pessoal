@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { Router } from '@angular/router';
+import { AuthService } from '@service/authService';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,17 @@ export class HeaderComponent implements OnInit {
 
   name: string;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private authService: AuthService
+
+  ) {
     this.name = ""
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this.name = this.authService.currentUserValue.name || ''
+  }
 
   onLogout() {
     this.router.navigate(['login'])
