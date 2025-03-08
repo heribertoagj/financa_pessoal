@@ -1,17 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonResponse } from '@commons/dto/commonResponse';
 import { AuthRequest } from '@commons/dto/authRequest';
 import { AuthService } from '@service/authService';
 import { Router, RouterModule } from '@angular/router';
+
+import { merge } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import {MatIconModule} from '@angular/material/icon';
 
 import { Utils } from '@commons/utils';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, RouterModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -20,79 +26,77 @@ export class LoginComponent implements OnInit {
   isLoading: boolean = false
   isSubmitted: boolean = false
 
-  username = '';
-  usernameError = '';
+  errorMessage = ""
+  successMessage = ""
 
-  password = '';
-  passwordError = '';
+  readonly username = new FormControl<string | null>('', [Validators.required]);
+  usernameErrorMessage = signal('');
 
-  errorMessage: string = '';
-  successMessage: string = '';
+  readonly password = new FormControl('', [Validators.required]);
+  passwordErrorMessage = signal('');
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private authService: AuthService) {
-
+    merge(this.username.statusChanges, this.username.valueChanges)
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.updateErrorMessage());
   }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
+    this.authService.logout()
+  }
+
+  updateErrorMessage() {
+    this.usernameErrorMessage.set('');
+    this.passwordErrorMessage.set('');
+    if (this.username.hasError('required')) {
+      this.usernameErrorMessage.set('Login is required');
+    }
+    if (this.password.hasError('required')) {
+      this.passwordErrorMessage.set('password is required');
+    }
   }
 
   onLogin() {
-    
-    if (!this.validateFields()) return
+    if (this.username.invalid || this.password.invalid) {
+      this.updateErrorMessage()
+      return
+    }
 
     let authRequest: AuthRequest = new AuthRequest()
-    authRequest.username = this.username
-    authRequest.password = this.password
-
+    authRequest.username = this.username.value!
+    authRequest.password = this.password.value!
+    
     this.isLoading = this.isSubmitted = true
     this.authService.login(authRequest).subscribe({
       next: result => {
-
         let response = result as CommonResponse
         if (response.code == 200) {
           this.router.navigate(['home'])
         }
-        else{
+        else {
           alert(JSON.stringify(result))
 
-          Utils.toShowError(this, 'Usuário ou senha inválido!')  
+          Utils.toShowError(this, 'Usuário ou senha inválido!')
         }
 
         this.isLoading = false;
       },
       error: err => {
-        Utils.toShowError(this, 'Ops! Ocorreu algum imprevisto na validação do usuário')  
+        Utils.toShowError(this, 'Ops! Ocorreu algum imprevisto na validação do usuário')
         this.isLoading = false;
       }
     })
   }
 
-  validateFields(){
-    this.usernameError = this.passwordError = ""
-
-    let existsError = false
-    if (!this.username) {
-      this.usernameError = "Usuário é obrigatório"
-      existsError = true
-    }
-
-    if (!this.password) {
-      this.passwordError = "Senha é obrigatório"
-      existsError = true
-    }
-
-    if (existsError) Utils.toShowError(this, "Informar campos obrigatórios")
-
-    return !existsError 
+  validateFields() {
   }
 
-  onRegister(){
+  onRegister() {
     this.router.navigate(['register'])
   }
 
 
- 
+
 }

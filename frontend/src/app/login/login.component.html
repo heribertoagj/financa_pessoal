@@ -1,21 +1,23 @@
 <div class="login-container container">
   <h2>Bem-vindo à TTech</h2>
 
-  <form (submit)="onLogin()">
-    <!-- Campo de Usuário -->
-    <div>
-      <input type="text" placeholder="Usuário" [(ngModel)]="username" name="username" [ngClass]="{'error-border': usernameError}" required>
-      <!-- <div *ngIf="usernameError" class="error-text">{{ usernameError }}</div> -->
-    </div>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Enter your login</mat-label>
+    <input matInput placeholder="Login" [formControl]="username"  (blur)="updateErrorMessage()" required />
+    @if (username.invalid) {
+    <mat-error>{{usernameErrorMessage()}}</mat-error>
+    }
+  </mat-form-field>
 
-    <!-- Campo de Senha -->
-    <div>
-      <input type="password" placeholder="Senha" [(ngModel)]="password" name="password" [ngClass]="{'error-border': passwordError}" required>
-      <!-- <div *ngIf="passwordError" class="error-text">{{ passwordError }}</div> -->
-    </div>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Enter your password</mat-label>
+    <input matInput type="password" [formControl]="password" required />
+    @if (password.invalid) {
+    <mat-error>{{passwordErrorMessage()}}</mat-error>
+    }
+  </mat-form-field>
 
-    <button type="submit">Entrar</button>
-  </form>
+  <button type="button" (click)="onLogin()">Entrar</button>
 
   <a href="#">Esqueceu sua senha?</a>
   <a routerLink="/register">Não tem conta? Cadastre-se</a>
