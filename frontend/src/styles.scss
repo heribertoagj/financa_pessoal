@@ -32,9 +32,17 @@ body {
 }
 
 h2 {
+  margin: 0;
+  padding: 15px 5px 0px 5px;
   font-size: 22px;
-  color: #2c3e50;
-  margin-bottom: 20px;
+  font-weight: bold;
+  color: black;
+  opacity: 0.75;
+  text-align: left;
+}
+
+hr {
+  margin: 5px;
 }
 
 button {
@@ -83,4 +91,32 @@ a:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: #f8f9fa;
+}
+
+.small-icon-button {
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0px !important;
+  margin: 5px !important;
+  opacity: 0.8;
+
+  & > *[role=img] {
+     width: 16px;
+     height: 16px;
+     font-size: 16px;
+
+     svg {
+        width: 16px;
+        height: 16px;
+     }
+  }
+
+  .mat-mdc-button-touch-target {
+     width: 24px !important;
+     height: 24px !important;
+  }
 }

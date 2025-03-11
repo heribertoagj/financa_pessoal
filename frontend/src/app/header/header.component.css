@@ -24,8 +24,7 @@
     margin: 0;
     padding: 0px;
     border: none;
-    border-radius: 6px;
-    background-color: var(--secondary-color);
+    background-color: inherit !important;
     opacity: 0.7;
  }
 

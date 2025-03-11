@@ -4,20 +4,21 @@
             <span>Welcome {{ name }} in the TTech financial management </span>            
         </div>
         <div class="logout">
-            <button mat-icon-button (click)="onLogout()">
-                <mat-icon>logout</mat-icon>
-            </button>
-            <button mat-icon-button >
+            <button  mat-mini-fab  class="mat-elevation-z2">
                 <mat-icon>menu</mat-icon>
             </button>
+            <button  mat-mini-fab  class="mat-elevation-z2" (click)="onLogout()">
+                <mat-icon>logout</mat-icon>
+            </button>
+
         </div>
     </div>
 
-    <div class="menu">
+    <div class="menu mat-elevation-z8" >
         <button mat-button>Dashboard</button>
         <button mat-button [matMenuTriggerFor]="receivesMenu">Receives</button>
         <mat-menu #receivesMenu="matMenu" xPosition="before">
-            <button mat-menu-item>Receives</button>
+            <button mat-menu-item (click)="onNavigate()">Receives</button>
             <button mat-menu-item>Type</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="expensesMenu">Expenses</button>

@@ -1,0 +1,22 @@
+.mat-mdc-table-sticky {
+    background-color: var(--secondary-color);
+}
+
+.mat-mdc-table .mat-mdc-header-cell {
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+}
+
+.actions{
+    height: 30px;
+    text-align: right;
+    padding: 0 10px;
+}
+
+.actions button{ 
+    padding: 0 5px;
+    margin: 0 2px;
+    overflow: visible;
+}
+

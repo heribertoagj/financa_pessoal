@@ -16,6 +16,7 @@ import { AuthService } from '@service/authService';
 })
 export class HeaderComponent implements OnInit {
 
+  isActive:boolean = false;
   name: string;
 
   constructor(
@@ -32,5 +33,9 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.router.navigate(['login'])
+  }
+
+  onNavigate(){  
+    this.router.navigate(['receive/list'])
   }
 }

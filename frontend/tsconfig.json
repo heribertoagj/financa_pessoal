@@ -7,7 +7,8 @@
       "@interceptors/*": ["./src/interceptors/*"],
       "@service/*": ["./src/service/*"],
       "@commons/*": ["./src/commons/*"],
-      "@environment":["./src/environments/environment"]
+      "@environment":["./src/environments/environment"],
+      "@interfaces/*": ["./src/interface/*"],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
