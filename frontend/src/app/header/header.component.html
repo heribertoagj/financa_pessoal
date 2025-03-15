@@ -15,15 +15,18 @@
     </div>
 
     <div class="menu mat-elevation-z8" >
-        <button mat-button>Dashboard</button>
+        <button mat-button (click)="onHome()">Dashboard</button>
         <button mat-button [matMenuTriggerFor]="receivesMenu">Receives</button>
         <mat-menu #receivesMenu="matMenu" xPosition="before">
-            <button mat-menu-item (click)="onNavigate()">Receives</button>
+            <button mat-menu-item (click)="onReceive()">Receives</button>
+            <button mat-menu-item>Customer</button>
             <button mat-menu-item>Type</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="expensesMenu">Expenses</button>
         <mat-menu #expensesMenu="matMenu" xPosition="before">
-            <button mat-menu-item>Expenses</button>
+            <button mat-menu-item (click)="onExpense()">Expenses</button>
+            <button mat-menu-item>Requisitor</button>
+            <button mat-menu-item>Establishment</button>
             <button mat-menu-item>Type</button>
         </mat-menu>
     </div>

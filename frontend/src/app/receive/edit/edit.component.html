@@ -1,10 +1,78 @@
-<div class="container mat-elevation-z2">
-
+<div class="container div-edit-receive mat-elevation-z2" [formGroup]="form">
     <div class="header">
-        <h2 > {{action}} receive</h2>
+        <h2> {{action}} Receive</h2>
         <hr>
     </div>
-    <section>   
-        
+
+    <section class="section-edit-receive">
+        <div class="actions mat-elevation-z2">
+            <button mat-mini-fab style="background-color: green; color: whitesmoke;" (click)="save()">
+                <mat-icon>done</mat-icon>
+            </button>
+            <button mat-mini-fab style="background-color: lightgray; color: whitesmoke;" (click)="goBack()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+        </div>
+        <div>
+            <mat-form-field class="name-field">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name" />
+                <mat-error *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+                    {{ nameErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="type-field">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option *ngFor="let item of types" [value]="item">{{ item }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('type')?.touched && form.get('type')?.invalid">
+                    {{ typeErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="customer-field">
+                <mat-label>Customer</mat-label>
+                <mat-select formControlName="customer">
+                    <mat-option *ngFor="let item of customers" [value]="item">{{ item }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('customer')?.touched && form.get('customer')?.invalid">
+                    {{ customerErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="date-field">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date" />
+                <mat-datepicker-toggle class="small-icon-button" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('date')?.touched && form.get('date')?.invalid">
+                    {{ dateErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="amount-field">
+                <mat-label>Amount</mat-label>
+                <input matInput currencyMask placeholder="Amount" formControlName="amount" />
+                <mat-error *ngIf="form.get('amount')?.touched && form.get('amount')?.invalid">
+                    {{ amountErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </section>
+
+    <section class="message">
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+
+        <div *ngIf="successMessage" class="success-message">
+            {{ successMessage }}
+        </div>
     </section>
 </div>

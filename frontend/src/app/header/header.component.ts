@@ -35,7 +35,15 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['login'])
   }
 
-  onNavigate(){  
+  onHome(){  
+    this.router.navigate(['home'])
+  }
+
+  onReceive(){  
     this.router.navigate(['receive/list'])
+  }
+
+  onExpense(){  
+    this.router.navigate(['expense/list'])
   }
 }

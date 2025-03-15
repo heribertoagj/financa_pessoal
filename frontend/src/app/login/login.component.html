@@ -3,7 +3,7 @@
 
   <mat-form-field style="width: 100%;">
     <mat-label>Enter your login</mat-label>
-    <input matInput placeholder="Login" [formControl]="username"  (blur)="updateErrorMessage()" required />
+    <input matInput placeholder="Login" [formControl]="username" (blur)="updateErrorMessage()" required />
     @if (username.invalid) {
     <mat-error>{{usernameErrorMessage()}}</mat-error>
     }

@@ -1,0 +1,39 @@
+
+.div-edit-receive {
+    width: 50%;
+}
+
+
+
+.section-edit-receive {
+    text-align: left;
+}
+
+.section-edit-receive mat-form-field {
+    margin-left: 10px;
+}
+
+.name-field {
+    width: 68%;
+}
+
+.type-field {
+    width: 28%;
+}
+
+.customer-field {
+    width: 68%;
+}
+
+.date-field {
+    width: 28%;
+}
+
+.amount-field {
+    width: 28%;
+}
+
+
+  
+  
+    

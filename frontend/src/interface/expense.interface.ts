@@ -4,5 +4,6 @@ export interface Exepense {
     name: string;
     type: string;
     establishment: string;
+    requisitor: string;
     amount: number;
 }

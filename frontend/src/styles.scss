@@ -31,6 +31,8 @@ body {
   background-color: var(--secondary-color);
 }
 
+
+
 h2 {
   margin: 0;
   padding: 15px 5px 0px 5px;
@@ -119,4 +121,32 @@ a:hover {
      width: 24px !important;
      height: 24px !important;
   }
+}
+
+.actions{
+  margin: 15px;
+  height: 50px;
+  text-align: right;
+  padding: 0 10px;
+  border: none;
+}
+
+.actions button{ 
+  padding: 0 3px;
+  margin: 5px 5px 0 0;
+  overflow: visible;
+}
+
+.table-wrapper {
+  padding: 0 14px 0 14px; /* Padding lateral */
+  max-height: 300px; /* Altura máxima */
+  overflow-y: auto; /* Rolagem vertical */
+  overflow-x: auto; /* Rolagem horizontal (se necessário) */
+}
+  table {
+  width: 100%; /* Garante que a tabela use 100% da largura disponível */
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
 }

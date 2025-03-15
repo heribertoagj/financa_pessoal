@@ -17,7 +17,7 @@ import { Utils } from '@commons/utils';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule,  MatIconModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -86,14 +86,8 @@ export class LoginComponent implements OnInit {
       }
     })
   }
-
-  validateFields() {
-  }
-
+  
   onRegister() {
     this.router.navigate(['register'])
   }
-
-
-
 }
