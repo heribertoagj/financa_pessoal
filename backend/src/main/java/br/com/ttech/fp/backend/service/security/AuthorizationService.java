@@ -1,10 +1,10 @@
-package br.com.ttech.fp.backend.service.impl;
+package br.com.ttech.fp.backend.service.security;
 
 
-import br.com.ttech.fp.backend.common.dto.AuthResponse;
-import br.com.ttech.fp.backend.common.dto.AuthenticationDto;
-import br.com.ttech.fp.backend.common.dto.ResgisterDto;
-import br.com.ttech.fp.backend.common.dto.ResponseDto;
+import br.com.ttech.fp.backend.common.records.security.AuthResponse;
+import br.com.ttech.fp.backend.common.records.security.Authentication;
+import br.com.ttech.fp.backend.common.records.security.Resgister;
+import br.com.ttech.fp.backend.common.records.Response;
 import br.com.ttech.fp.backend.common.entity.User;
 import br.com.ttech.fp.backend.common.enums.Messages;
 import br.com.ttech.fp.backend.common.exception.BadRequestException;
@@ -32,8 +32,8 @@ public class AuthorizationService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
-    public ResponseDto userValidate(AuthenticationDto data , String token){
-        ResponseDto response = new ResponseDto();
+    public Response userValidate(Authentication data , String token){
+        Response response = new Response();
         User user = userRepository.findByUsername(data.username());
         response.setCode(HttpStatus.OK.value());
         response.setDateTime(LocalDateTime.now());
@@ -44,8 +44,8 @@ public class AuthorizationService implements UserDetailsService {
         return response;
     }
 
-    public ResponseDto register(ResgisterDto register){
-        ResponseDto response = new ResponseDto();
+    public Response register(Resgister register){
+        Response response = new Response();
 
         String encryptPassword = new BCryptPasswordEncoder().encode(register.password());
         var user = userRepository.findByUsername(register.username());

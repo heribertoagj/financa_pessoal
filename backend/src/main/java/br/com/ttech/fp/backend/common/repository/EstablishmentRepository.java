@@ -1,4 +1,7 @@
 package br.com.ttech.fp.backend.common.repository;
 
-public interface EstablishmentRepository {
+import br.com.ttech.fp.backend.common.entity.Establishment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EstablishmentRepository extends JpaRepository<Establishment, String> {
 }

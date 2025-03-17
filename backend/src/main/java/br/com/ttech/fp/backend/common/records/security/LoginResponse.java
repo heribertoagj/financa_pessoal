@@ -1,4 +1,4 @@
-package br.com.ttech.fp.backend.common.dto;
+package br.com.ttech.fp.backend.common.records.security;
 
-public record LoginResponseDto(String token) {
+public record LoginResponse(String token) {
 }

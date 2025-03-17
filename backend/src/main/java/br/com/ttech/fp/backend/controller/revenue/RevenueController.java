@@ -1,9 +1,11 @@
-package br.com.ttech.fp.backend.controller;
+package br.com.ttech.fp.backend.controller.revenue;
 
-import br.com.ttech.fp.backend.common.dto.ResponseDto;
-import br.com.ttech.fp.backend.common.dto.RevenueDto;
-import br.com.ttech.fp.backend.service.impl.RevenueService;
+import br.com.ttech.fp.backend.common.records.Response;
+import br.com.ttech.fp.backend.common.records.revenue.RevenueRequest;
+import br.com.ttech.fp.backend.service.revenue.IRevenueService;
+import br.com.ttech.fp.backend.service.revenue.RevenueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,19 +14,37 @@ import org.springframework.web.bind.annotation.*;
 public class RevenueController {
 
     @Autowired
-    RevenueService service;
+    IRevenueService service;
 
-    @GetMapping("/find")
-    public ResponseEntity<ResponseDto> findRevenueType(
+    @GetMapping(value="/find", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> find (
             @RequestParam(value = "idUser", required = true) String idUser,
             @RequestParam(value = "idRevenueSource", required = false) String idRevenueSource,
             @RequestParam(value = "idRevenueType", required = false) String idRevenueType){
-        return ResponseEntity.ok(service.findByfilters(idUser, idRevenueSource, idRevenueType));
+        return ResponseEntity.ok(service.find(idUser, idRevenueSource, idRevenueType));
     }
 
-    @PostMapping("/save")
-    public ResponseEntity<ResponseDto> saveRevenue(
-            @RequestBody()RevenueDto revenue){
-        return ResponseEntity.ok(service.save(revenue));
+    @GetMapping(value = "/detail", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> detail (
+            @RequestParam(value = "id", required = true) String id){
+        return ResponseEntity.ok(service.detail(id));
+    }
+
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> create (
+            @RequestBody() RevenueRequest request){
+        return ResponseEntity.ok(service.create(request));
+    }
+
+    @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> update (
+            @RequestBody() RevenueRequest request) {
+        return ResponseEntity.ok(service.update(request));
+    }
+
+    @DeleteMapping(value = "/remove", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Response> remove (
+            @RequestParam("id") String id){
+        return ResponseEntity.ok(service.remove(id));
     }
 }

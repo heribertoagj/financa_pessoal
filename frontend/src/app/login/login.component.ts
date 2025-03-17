@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
 
     let authRequest: AuthRequest = new AuthRequest()
     authRequest.username = this.username.value!
-    authRequest.password = this.password.value!
+    authRequest.password = btoa(this.password.value!);
     
     this.isLoading = this.isSubmitted = true
     this.authService.login(authRequest).subscribe({

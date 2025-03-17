@@ -1,18 +1,29 @@
-package br.com.ttech.fp.backend.common.dto;
+package br.com.ttech.fp.backend.common.records.revenue;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
-public record RevenueDto(
+public record RevenueRequest(
+        String id,
+
+        @NotNull(message = "User id is required")
         @NotBlank(message = "User id is required")
         String idUser,
-        @NotBlank(message = "Revenue Type is required")
+
+        @NotNull(message = "Revenue type id is required")
+        @NotBlank(message = "Revenue type id is required")
         String idRevenueType,
-        @NotBlank(message = "Revenue source is required")
+
+        @NotNull(message = "Revenue source id is required")
+        @NotBlank(message = "Revenue source id is required")
         String idRevenueSource,
 
+
+        @NotNull(message = "Revenue description is required")
+        @NotBlank(message = "Revenue description is required")
         String dsRevenue,
+
         Integer nuPayDay,
-        boolean isIssueInvoice,
+        boolean ciIssuedInvoice,
         BigDecimal vlAmount) { }

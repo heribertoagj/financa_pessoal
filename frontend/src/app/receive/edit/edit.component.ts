@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ViewChild, ChangeDetectionStrategy, Component, OnInit, signal, Renderer2, ElementRef } from '@angular/core';
-import { Receive } from '@interfaces/receive.interface';
+import { ChangeDetectionStrategy, Component, OnInit, signal, Renderer2, ElementRef } from '@angular/core';
+import { Revenue } from '@interfaces/revenue.interface';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field'
 import { FormsModule, ReactiveFormsModule, Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -33,7 +33,7 @@ export class EditReceiveComponent implements OnInit {
   isSubmitted = false
   isLoading = false
 
-  receive?: Receive;
+  revenue?: Revenue;
   action?: string;
   
   types = ['Salary', 'Biling', 'Benefits'];
@@ -52,16 +52,16 @@ export class EditReceiveComponent implements OnInit {
     });
 
     const state = history.state;
-    this.receive = state.receive;
+    this.revenue = state.revenue;
     this.action = state.action;
 
     
-    if (this.receive){
-      this.form.get('name')?.setValue(this.receive.name);
-      this.form.get('type')?.setValue(this.receive.type);   
-      this.form.get('customer')?.setValue(this.receive.customer);
-      this.form.get('date')?.setValue(this.receive.date);
-      this.form.get('amount')?.setValue(this.receive.amount);
+    if (this.revenue){
+      this.form.get('name')?.setValue(this.revenue.dsRevenue);
+      this.form.get('type')?.setValue(this.revenue.revenueType.dsRevenueType);   
+      this.form.get('customer')?.setValue(this.revenue.revenueSource.dsRevenueSource);
+      this.form.get('date')?.setValue(new Date());
+      this.form.get('amount')?.setValue(this.revenue.vlAmount);
     }
 
 

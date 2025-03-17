@@ -1,5 +1,7 @@
 package br.com.ttech.fp.backend.common.enums;
 
+import lombok.Getter;
+
 public enum UserRole {
 
     ADMIN("admin"),

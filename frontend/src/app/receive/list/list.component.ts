@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
-import { Receive } from '@interfaces/receive.interface';
+import { Revenue } from '@interfaces/revenue.interface';
 
 @Component({
   selector: 'app-receive-list',
@@ -18,27 +18,20 @@ import { Receive } from '@interfaces/receive.interface';
 })
 export class ListComponent {
   displayedColumns = ['item', 'date','type', 'customer', 'amount', 'action'];
-  transactions: Receive[] = [
-    { id: 'teste', date: new Date(), name: 'Faturamento', type: 'Biling', customer: 'MXN', amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Faturamento', type: 'Biling', customer: 'SIS', amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Faturamento', type: 'Biling', customer: 'SIS', amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Faturamento', type: 'Biling', customer: 'SIS', amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Faturamento', type: 'Biling', customer: 'SIS', amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Salário', type: 'Salary', customer: 'Sixpro', amount: 4 }
-  ];
+  transactions: Revenue[] = [];
 
   constructor (private route: Router) {}
 
   /** Gets the total cost of all transactions. */
   getTotalCost() {
-    return this.transactions.map(t => t.amount).reduce((acc, value) => acc + value, 0);
+    return this.transactions.map(t => t.vlAmount).reduce((acc, value) => acc + value, 0);
   }
 
   onAdd(){
     this.route.navigate(['/receive/edit'], {state: { action: 'Add'}});
   }
 
-  onEdit(transaction: Receive){
+  onEdit(transaction: Revenue){
     this.route.navigate(['/receive/edit'], {state: {receive: transaction, action: 'Edit'}});
   }
 }

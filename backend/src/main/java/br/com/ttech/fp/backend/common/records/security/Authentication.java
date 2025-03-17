@@ -1,4 +1,4 @@
-package br.com.ttech.fp.backend.common.dto;
+package br.com.ttech.fp.backend.common.records.security;
 
-public record AuthenticationDto (String username, String password) {
+public record Authentication(String username, String password) {
 }

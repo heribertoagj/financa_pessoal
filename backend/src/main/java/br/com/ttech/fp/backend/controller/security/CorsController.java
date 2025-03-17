@@ -1,4 +1,4 @@
-package br.com.ttech.fp.backend.controller;
+package br.com.ttech.fp.backend.controller.security;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

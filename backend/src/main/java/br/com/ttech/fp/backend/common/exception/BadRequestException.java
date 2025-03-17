@@ -1,7 +1,7 @@
 package br.com.ttech.fp.backend.common.exception;
 
-public class RequiredFieldException extends RuntimeException{
-    public RequiredFieldException(String message){
+public class BadRequestException extends RuntimeException{
+    public BadRequestException(String message){
         super(message);
     }
 }
