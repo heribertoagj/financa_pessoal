@@ -1,6 +1,7 @@
 package br.com.ttech.fp.backend.configs.security;
 
 
+import br.com.ttech.fp.backend.common.enums.Messages;
 import br.com.ttech.fp.backend.common.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -46,7 +47,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         catch(Exception e){
-            throw new BadCredentialsException("Token de autorização inválido");
+            throw new BadCredentialsException(Messages.AUTHORIZATION_TOKEN_IS_INVALID.getMessage());
         }
     }
 

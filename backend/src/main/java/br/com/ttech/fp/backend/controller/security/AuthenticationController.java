@@ -39,5 +39,4 @@ public class AuthenticationController {
         ResponseDto response = service.register(register);
         return ResponseEntity.ok(response);
     }
-
 }

@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 public class ResponseDto {
     private Integer code;
     private String message;
-    private String description;
     private LocalDateTime dateTime;
     private Object data;
     private Boolean isOperational;

@@ -1,7 +1,7 @@
 package br.com.ttech.fp.backend.configs.security;
 
-
 import br.com.ttech.fp.backend.common.entity.User;
+import br.com.ttech.fp.backend.common.enums.Messages;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
@@ -30,7 +30,7 @@ public class TokenService {
             return token;
         }
         catch (JWTCreationException je){
-            throw new RuntimeException("Error while generate token", je);
+            throw new RuntimeException(Messages.ERROR_WHILE_GENERATE_TOKEN.getMessage(), je);
         }
 
     }
@@ -50,8 +50,7 @@ public class TokenService {
     }
 
     private Instant genExpirationDate(){
-        return
-                LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
+        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }
 
