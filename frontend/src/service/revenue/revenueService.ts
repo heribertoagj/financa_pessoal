@@ -14,7 +14,7 @@ export class revenueService extends CommonService{
         }
     
         find(): Observable<any> {
-            return this.httpClient.get<any>(environment.url + Path.REVENUE_TYPE_FIND, this.httpOptions)
+            return this.httpClient.get<any>(environment.url + Path.REVENUE_FIND, this.httpOptions)
         }
     
         create(): Observable<any> {

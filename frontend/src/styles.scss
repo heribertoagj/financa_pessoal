@@ -124,11 +124,19 @@ a:hover {
 }
 
 .actions{
-  margin: 15px;
-  height: 50px;
-  text-align: right;
+  display: flex; 
+  justify-content: space-between; 
+  margin: 10px 15px 10px 15px;
+  height: 65px;
   padding: 0 10px;
   border: none;
+}
+
+.actions .filters {
+  display: flex;
+}
+.actions .buttons {
+  display: flex;
 }
 
 .actions button{ 

@@ -11,6 +11,21 @@ export const httpRequestInterceptor: HttpInterceptorFn = (req, next) => {
         return next(req);
     }
 
+    if (req.method == "GET"){
+        const reqWithUserId = req.clone({
+            params: req.params.set('idUser', authService.currentUserValue._id ?? '')
+        });
+
+        if (authService.currentUserValue.token) {
+            const reqWithAuth = reqWithUserId.clone({
+                headers: req.headers.set('authorization', "Bearer " + authService.currentUserValue.token)
+            })
+            return next(reqWithAuth)
+        }    
+
+        return next(reqWithUserId)
+    } 
+
     if (authService.currentUserValue.token) {
         const reqWithAuth = req.clone({
             headers: req.headers.set('authorization', "Bearer " + authService.currentUserValue.token)

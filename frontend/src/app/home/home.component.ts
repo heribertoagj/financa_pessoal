@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ListComponent as ListReceiveComponent} from "../receive/list/list.component";
+import { ListComponent as ListReceiveComponent} from "../revenue/list/list.component";
 import { ListComponent as ListExpensesComponent } from "../expenses/list/list.component";
 
 @Component({
