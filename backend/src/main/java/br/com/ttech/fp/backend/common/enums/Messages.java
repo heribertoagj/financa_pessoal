@@ -11,7 +11,7 @@ public enum Messages {
 
     ID_IS_REQUIRED("Id is required"),
 
-    OPERATION_EXECUTED_SUCCESSFULLY ("Operation executed successfully"),
+    OPERATION_EXECUTED_SUCCESSFULLY("Operation executed successfully"),
 
     REGISTERS_NOT_FOUND("Registers not found"),
     REQUIRED_PARAMETER_IS_MISSING("Required parameter is missing"),
@@ -24,11 +24,7 @@ public enum Messages {
 
     private final String message;
 
-    Messages(String message){
+    Messages(String message) {
         this.message = message;
-    }
-
-    public String getMessage(){
-        return this.message;
     }
 }

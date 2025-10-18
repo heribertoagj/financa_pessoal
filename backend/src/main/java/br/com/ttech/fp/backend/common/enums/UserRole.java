@@ -2,6 +2,7 @@ package br.com.ttech.fp.backend.common.enums;
 
 import lombok.Getter;
 
+@Getter
 public enum UserRole {
 
     ADMIN("admin"),
@@ -11,9 +12,5 @@ public enum UserRole {
 
     UserRole(String role){
         this.role = role;
-    }
-
-    public String getRole(){
-        return this.role;
     }
 }
