@@ -1,0 +1,52 @@
+services:
+  mysql:
+    image: mysql:8.0   # Imagem oficial do MySQL (versão 8.0)
+    container_name: fp-database
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - "3316:3306"                 # Mapeando a porta 3306 do container para a porta 3316 da máquina host
+    volumes:
+      - mysql-data:/var/lib/mysql  # Persistência dos dados do banco de dados
+    networks:
+      - fp-dev-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5050:5000"
+    container_name: fp-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fp?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: fp-backend
+      SPRING_DATASOURCE_PASSWORD: tech1234
+      SPRING_PROFILES_ACTIVE: dev
+      JWT_SECRET: ${JWT_SECRET:-my-secret-key}
+    depends_on:
+      - mysql   
+    networks:
+      - fp-dev-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    container_name: fp-frontend
+    environment:
+      - API_URL=http://backend:5050
+    depends_on:
+      - backend
+    networks:
+      - fp-dev-network
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  fp-dev-network:
+    external: true
