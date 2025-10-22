@@ -19,14 +19,14 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "5050:5000"
+      - "5050:5050"
     container_name: fp-backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fp?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: fp-backend
       SPRING_DATASOURCE_PASSWORD: tech1234
       SPRING_PROFILES_ACTIVE: dev
-      JWT_SECRET: ${JWT_SECRET:-my-secret-key}
+      JWT_SECRET: ${JWT_SECRET}
     depends_on:
       - mysql   
     networks:

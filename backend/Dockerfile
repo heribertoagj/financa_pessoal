@@ -7,7 +7,7 @@ RUN gradle bootJar --no-daemon --stacktrace
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=build /home/gradle/project/build/libs/*.jar app.jar
-EXPOSE 5000
-ENV SPRING_PROFILES_ACTIVE=prod
+EXPOSE 5050
+ENV SPRING_PROFILES_ACTIVE=develop
 ENTRYPOINT ["sh","-c","java -jar /app/app.jar"]
 
