@@ -19,11 +19,6 @@ import { Exepense } from '@interfaces/expense.interface';
 export class ListComponent {
   displayedColumns = ['date', 'item', 'requisitor', 'type', 'establishment', 'amount', 'action'];
   transactions: Exepense[] = [
-    { id: 'teste', date: new Date(), name: 'Mensalidade', type: 'Educação', establishment: 'Colégio Innovativo', requisitor: "Beatriz", amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Material', type: 'Educação', establishment: 'Colégio innovativo', requisitor: "Rafael", amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Material', type: 'Educação', establishment: 'Colégio innovativo', requisitor: "Junior", amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Material', type: 'Educação', establishment: 'Colégio innovativo', requisitor: "Tatiana", amount: 4 },
-    { id: 'teste', date: new Date(), name: 'Trilha', type: 'Salário', establishment: 'Colégio innovativo',  requisitor: "Beatriz",amount: 4 }
   ];
 
   /** Gets the total cost of all transactions. */

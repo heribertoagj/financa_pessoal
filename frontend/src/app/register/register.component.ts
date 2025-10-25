@@ -6,6 +6,12 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { RegisterRequest } from '@commons/dto/registerRequest';
+
+import { AuthService } from '@service/authService';
+import { CommonResponse } from '@commons/dto/commonResponse';
+import { R } from '@angular/cdk/overlay.d-BdoMy0hX';
+import { RoleEnum } from '@commons/enums/roleEnum';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +32,9 @@ export class RegisterComponent implements OnInit {
   errorMessage: string = ''
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -46,6 +54,24 @@ export class RegisterComponent implements OnInit {
       Utils.toShowError(this, 'Preencha todos os campos obrigatórios.')
       return;
     }
+
+    let register = new RegisterRequest();
+    register.name = this.form.get('name')?.value;
+    register.email = this.form.get('email')?.value;
+    register.username = this.form.get('login')?.value;
+    register.password = this.form.get('password')?.value;
+    register.role = RoleEnum.ADMIN;
+
+    this.authService.register(register).subscribe({
+      next: (response) => {
+        Utils.toShowSuccess(this, 'Registro realizado com sucesso');
+      }
+      , error: (err) => {
+        let errorResponse = err as CommonResponse    
+        if (errorResponse.message) Utils.toShowError(this, errorResponse.message );
+        else Utils.toShowError(this, 'Erro ao realizar o registro do usuário.');
+      }
+    });
   }
 
   nameErrorMessage() {

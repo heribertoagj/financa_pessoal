@@ -6,7 +6,7 @@
 
   <div class="actions mat-elevation-z4">
     <div class="filters">
-      <mat-form-field appearance="outline">
+      <mat-form-field class="field" appearance="outline" >
         <mat-label>Start date</mat-label>
         <input matInput [matDatepicker]="pickerStart" formControlName="startDate" />
         <mat-datepicker-toggle matIconPrefix [for]="pickerStart">
@@ -14,7 +14,7 @@
         <mat-datepicker #pickerStart></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field  class="field" appearance="outline">
         <mat-label>End date</mat-label>
         <input matInput [matDatepicker]="pickerEnd" formControlName="endDate" />
         <mat-datepicker-toggle matIconPrefix [for]="pickerEnd" />

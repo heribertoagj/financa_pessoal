@@ -9,13 +9,13 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router)
 
   return next(req).pipe(
-      catchError((error: HttpErrorResponse) => {
-
-     if (error.status == 403){
+    catchError((error: HttpErrorResponse) => {
+      if (error.status == 403) {
         authService.logout()
-        router.navigate(['/login'],{queryParams: {message: "Login do usuário expirou"}})
-        
+        router.navigate(['/login'], { queryParams: { message: "Login do usuário expirou" } })
+
       }
-      return throwError(()=> new Error(error.message));
-  }));
+      console.log('Error Interceptor:', error.error);
+      return throwError(() => error.error);
+    }));
 };

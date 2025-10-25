@@ -1,7 +1,7 @@
 
 export enum Path {
     SIGNIN = '/auth/login',
-
+    REGISTER = '/auth/register',
     
     //Revenue
     REVENUE_FIND = '/v1/revenue/find',

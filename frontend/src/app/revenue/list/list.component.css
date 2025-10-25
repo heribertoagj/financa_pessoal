@@ -4,50 +4,53 @@ table {
             background-color: rgba(0, 128, 0, 0.3) !important;
         }
     }
-
 }
 
-.filters {
-    display: flex;
-    width: 260px;
-    min-width: 260px;
-    margin: 0 0px;
+::ng-deep .mat-datepicker-toggle {
+  transform: scale(0.8);
+}
 
-    ::ng-deep mat-form-field {
-        height: 40px !important;
-    }
+::ng-deep mat-form-field {
+    height: 40px !important;
+}
 
-    ::ng-deep .mat-mdc-form-field-wrapper {
-        height: 45px !important;
-    }
+::ng-deep .mat-mdc-form-field-wrapper {
+    height: 45px !important;
+}
 
-    ::ng-deep .mat-mdc-form-field-flex {
-        height: 35px !important;
-        align-items: center !important;
-    }
+::ng-deep .mat-mdc-form-field-flex {
+    height: 35px !important;
+    align-items: center !important;
+}
 
-    ::ng-deep .mat-mdc-form-field-infix {
-        min-height: 30px !important;
-        padding-top: 8px !important;
-        padding-bottom: 8px !important;
-    }
+::ng-deep .mat-mdc-form-field-infix {
+    min-height: 30px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
 
-    ::ng-deep .mat-mdc-text-field-wrapper {
-        height: 30px !important;
-    }
+::ng-deep .mat-mdc-text-field-wrapper {
+    height: 30px !important;
+}
 
-    ::ng-deep .mat-mdc-form-field-subscript-wrapper {
-        display: none !important;
-    }
+::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+}
 
-    ::ng-deep input {
-        height: 20px !important;
-        font-size: 14px !important;
-        line-height: 20px !important;
-    }
+::ng-deep input {
+    height: 20px !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+}
 
-    ::ng-deep mat-label {
-        font-size: 14px !important;
-        line-height: 20px !important;
-    }
+::ng-deep .filters mat-label {
+    text-align: center !important;
+    width: 100%;
+    display: block;
+}
+
+::ng-deep mat-label {
+    font-size: 14px !important;
+    line-height: 20px !important;
+}
 }
