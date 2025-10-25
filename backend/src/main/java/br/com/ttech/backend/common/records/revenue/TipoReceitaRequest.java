@@ -1,6 +1,6 @@
 package br.com.ttech.backend.common.records.revenue;
 
-public record RevenueTypeRequest(
+public record TipoReceitaRequest(
         String id,
         String idUser,
         String dsRevenueType) {}

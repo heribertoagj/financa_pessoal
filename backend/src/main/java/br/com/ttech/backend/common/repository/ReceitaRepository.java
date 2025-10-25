@@ -1,37 +1,37 @@
 package br.com.ttech.backend.common.repository;
 
-import br.com.ttech.backend.common.entity.Revenue;
+import br.com.ttech.backend.common.entity.Receita;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface RevenueRepository extends JpaRepository<Revenue, String> {
+public interface ReceitaRepository extends JpaRepository<Receita, String> {
 
-    List<Revenue> findByIdUser(String idUser);
-
-    @Query("Select r " +
-            " from revenue r " +
-            "where idUser = :idUser " +
-            "  and revenueSource.id = :idRevenueSource" +
-            "  and revenueType.id = :idRevenueType")
-    List<Revenue> findByFilters(@Param("idUser") String idUser,
-                                    @Param("idRevenueSource") String idRevenueSource,
-                                        @Param("idRevenueType") String idRevenueType);
+    List<Receita> findByIdUser(String idUser);
 
     @Query("Select r " +
-            " from revenue r " +
+            " from receita r " +
             "where idUser = :idUser " +
-            "  and revenueSource.id = :idRevenueSource")
-    List<Revenue> findByRevenueSource(@Param("idUser") String idUser,
-                                            @Param("idRevenueSource") String idRevenueSource);
+            "  and fonteReceita.id = :idFonteReceita" +
+            "  and tipoReceita.id = :idTipoReceita")
+    List<Receita> findByFilters(@Param("idUser") String idUser,
+                                @Param("idFonteReceita") String idFonteReceita,
+                                @Param("idTipoReceita") String idTipoReceita);
 
     @Query("Select r " +
-            " from revenue r " +
+            " from receita r " +
             "where idUser = :idUser " +
-            "  and revenueType.id = :idRevenueType")
-    List<Revenue> findByRevenueType(@Param("idUser") String idUser,
-                                            @Param("idRevenueType") String idRevenueType);
+            "  and fonteReceita.id = :idFonteReceita")
+    List<Receita> findByRevenueSource(@Param("idUser") String idUser,
+                                      @Param("idFonteReceita") String idFonteReceita);
+
+    @Query("Select r " +
+            " from receita r " +
+            "where idUser = :idUser " +
+            "  and tipoReceita.id = :idTipoReceita")
+    List<Receita> findByRevenueType(@Param("idUser") String idUser,
+                                    @Param("idTipoReceita") String idTipoReceita);
 
 }

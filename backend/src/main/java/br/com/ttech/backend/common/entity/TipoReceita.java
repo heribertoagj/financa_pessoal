@@ -3,14 +3,14 @@ package br.com.ttech.backend.common.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "revenue_type")
-@Table(name = "revenue_type")
+@Entity(name = "tipo_receita")
+@Table(name = "tipo_receita")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class RevenueType {
+public class TipoReceita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -18,5 +18,5 @@ public class RevenueType {
 
     private String idUser;
 
-    private String dsRevenueType;
+    private String dsTipoReceita;
 }

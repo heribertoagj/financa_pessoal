@@ -4,14 +4,14 @@ package br.com.ttech.backend.common.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "establishment")
-@Table(name = "establishment")
+@Entity(name = "estabelecimento")
+@Table(name = "estabelecimento")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Establishment {
+public class Estabelecimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -19,5 +19,5 @@ public class Establishment {
 
     private String idUser;
 
-    private String dsEstablishment;
+    private String dsEstabelecimento;
 }

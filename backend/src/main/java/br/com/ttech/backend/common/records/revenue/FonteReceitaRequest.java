@@ -3,7 +3,7 @@ package br.com.ttech.backend.common.records.revenue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public record RevenueSourceRequest(
+public record FonteReceitaRequest(
         String id,
 
         @NotNull(message = "User id is required")

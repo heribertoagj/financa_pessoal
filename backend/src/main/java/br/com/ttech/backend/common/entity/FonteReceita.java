@@ -6,27 +6,27 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 
-@Entity(name = "revenue_source")
-@Table(name = "revenue_source")
+@Entity(name = "fonte_receita")
+@Table(name = "fonte_receita")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class RevenueSource {
+public class FonteReceita {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String idUser;
 
-    private String dsRevenueSource;
+    private String dsFonteReceita;
 
-    private Boolean ciIssueInvoice;
+    private Boolean ciNotaFiscal;
 
-    private String cdCnpjSource;
+    private String cdCnpjPagador;
 
-    private String dsLegalName;
+    private String dsRazaoSocialPagador;
 
     private LocalDateTime hrCreatedAt;
 

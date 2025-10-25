@@ -7,14 +7,14 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity(name = "revenue")
-@Table(name = "revenue")
+@Entity(name = "receita")
+@Table(name = "receita")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Revenue {
+public class Receita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,20 +23,20 @@ public class Revenue {
     private String idUser;
 
     @ManyToOne
-    @JoinColumn(name = "idRevenueType")
-    private RevenueType revenueType;
+    @JoinColumn(name = "idTipoReceita")
+    private TipoReceita tipoReceita;
 
     @ManyToOne
-    @JoinColumn(name = "idRevenueSource")
-    private RevenueSource revenueSource;
+    @JoinColumn(name = "idFonteReceita")
+    private FonteReceita fonteReceita;
 
-    private String dsRevenue;
+    private String dsReceita;
 
-    private Integer nuPayDay;
+    private Integer nuDiaFaturamento;
 
-    private boolean ciIssuedInvoice;
+    private boolean ciNotaFiscal;
 
-    private BigDecimal vlAmount;
+    private BigDecimal vlReceita;
 
     private LocalDateTime hrCreatedAt;
 

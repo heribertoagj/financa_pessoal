@@ -1,12 +1,12 @@
 package br.com.ttech.backend.service.revenue;
 
-import br.com.ttech.backend.common.entity.RevenueType;
+import br.com.ttech.backend.common.entity.TipoReceita;
 import br.com.ttech.backend.common.enums.Messages;
 import br.com.ttech.backend.common.exception.BadRequestException;
 import br.com.ttech.backend.common.exception.NotFoundException;
 import br.com.ttech.backend.common.records.Response;
-import br.com.ttech.backend.common.records.revenue.RevenueTypeRequest;
-import br.com.ttech.backend.common.repository.RevenueTypeRepository;
+import br.com.ttech.backend.common.records.revenue.TipoReceitaRequest;
+import br.com.ttech.backend.common.repository.TipoReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.List;
 public class RevenueTypeService implements IRevenueTypeService{
 
     @Autowired
-    RevenueTypeRepository repository;
+    TipoReceitaRepository repository;
 
     @Override
     public Response find(String idUser) {
@@ -27,7 +27,7 @@ public class RevenueTypeService implements IRevenueTypeService{
         if (idUser == null)
             throw new BadRequestException(Messages.USER_ID_IS_REQUIRED.getMessage());
 
-        List<RevenueType> result = repository.findByIdUser(idUser);
+        List<TipoReceita> result = repository.findByIdUser(idUser);
 
         response.setMessage((result.isEmpty())?
                 Messages.REGISTERS_NOT_FOUND.getMessage():
@@ -52,12 +52,12 @@ public class RevenueTypeService implements IRevenueTypeService{
     }
 
     @Override
-    public Response create(RevenueTypeRequest request) {
+    public Response create(TipoReceitaRequest request) {
         Response response = new Response();
 
-        RevenueType entity = new RevenueType();
+        TipoReceita entity = new TipoReceita();
         entity.setIdUser(request.idUser());
-        entity.setDsRevenueType(request.dsRevenueType());
+        entity.setDsTipoReceita(request.dsRevenueType());
         var result = repository.save(entity);
 
         response.setCode(HttpStatus.OK.value());
@@ -68,14 +68,14 @@ public class RevenueTypeService implements IRevenueTypeService{
     }
 
     @Override
-    public Response update(RevenueTypeRequest request) {
+    public Response update(TipoReceitaRequest request) {
         Response response = new Response();
 
         var entity = detail(request.id());
 
-        RevenueType rt = (RevenueType) entity.getData();
+        TipoReceita rt = (TipoReceita) entity.getData();
 
-        rt.setDsRevenueType(request.dsRevenueType());
+        rt.setDsTipoReceita(request.dsRevenueType());
         var result = repository.save(rt);
 
         response.setCode(HttpStatus.OK.value());
@@ -90,7 +90,7 @@ public class RevenueTypeService implements IRevenueTypeService{
         Response response = new Response();
 
         var entity = detail(id);
-        repository.delete((RevenueType) entity.getData());
+        repository.delete((TipoReceita) entity.getData());
         response.setCode(HttpStatus.OK.value());
         response.setMessage(Messages.OPERATION_EXECUTED_SUCCESSFULLY.getMessage());
         response.setDateTime(LocalDateTime.now());

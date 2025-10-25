@@ -1,12 +1,12 @@
 package br.com.ttech.backend.service.revenue;
 
-import br.com.ttech.backend.common.entity.RevenueSource;
+import br.com.ttech.backend.common.entity.FonteReceita;
 import br.com.ttech.backend.common.enums.Messages;
 import br.com.ttech.backend.common.exception.BadRequestException;
 import br.com.ttech.backend.common.exception.NotFoundException;
 import br.com.ttech.backend.common.records.Response;
-import br.com.ttech.backend.common.records.revenue.RevenueSourceRequest;
-import br.com.ttech.backend.common.repository.RevenueSourceRepository;
+import br.com.ttech.backend.common.records.revenue.FonteReceitaRequest;
+import br.com.ttech.backend.common.repository.FonteReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class RevenueSourceService implements IRevenueSourceService {
 
     @Autowired
-    RevenueSourceRepository repository;
+    FonteReceitaRepository repository;
 
     @Override
     public Response find(String idUser){
@@ -51,10 +51,10 @@ public class RevenueSourceService implements IRevenueSourceService {
     }
 
     @Override
-    public Response create(RevenueSourceRequest request) {
+    public Response create(FonteReceitaRequest request) {
         Response response = new Response();
 
-        RevenueSource entity = setRevenueSourceValues(request, new RevenueSource());
+        FonteReceita entity = setRevenueSourceValues(request, new FonteReceita());
         entity.setIdUser(request.idUser());
         entity.setHrCreatedAt(LocalDateTime.now());
 
@@ -68,13 +68,13 @@ public class RevenueSourceService implements IRevenueSourceService {
     }
 
     @Override
-    public Response update(RevenueSourceRequest request) {
+    public Response update(FonteReceitaRequest request) {
         Response response = new Response();
 
         if (request.id() == null) throw new BadRequestException(Messages.ID_IS_REQUIRED.getMessage());
 
         var detailResponse = detail(request.id());
-        var entityOld = (RevenueSource) detailResponse.getData();
+        var entityOld = (FonteReceita) detailResponse.getData();
         var entityNew = setRevenueSourceValues(request, entityOld);
         entityNew.setHrUpdatedAt(LocalDateTime.now());
         var result = repository.save(entityNew);
@@ -91,7 +91,7 @@ public class RevenueSourceService implements IRevenueSourceService {
         Response response = new Response();
 
         var detailResponse = detail(id);
-        var entityOld = (RevenueSource) detailResponse.getData();
+        var entityOld = (FonteReceita) detailResponse.getData();
         repository.delete(entityOld);
 
         response.setCode(HttpStatus.OK.value());
@@ -100,10 +100,10 @@ public class RevenueSourceService implements IRevenueSourceService {
         return response;
     }
 
-    private RevenueSource setRevenueSourceValues(RevenueSourceRequest request, RevenueSource entity){
-        entity.setDsRevenueSource(request.dsRevenueSource());
-        entity.setCdCnpjSource(request.cdCnpjSource());
-        entity.setDsLegalName(request.dsLegalName());
+    private FonteReceita setRevenueSourceValues(FonteReceitaRequest request, FonteReceita entity){
+        entity.setDsFonteReceita(request.dsRevenueSource());
+        entity.setCdCnpjPagador(request.cdCnpjSource());
+        entity.setDsRazaoSocialPagador(request.dsLegalName());
         return entity;
     }
 }
