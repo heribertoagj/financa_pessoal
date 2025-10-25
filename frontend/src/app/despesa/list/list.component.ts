@@ -5,9 +5,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
 
-import { Exepense } from '@interfaces/expense.interface';
+import { Despesa } from '@interfaces/despesa.interface';
 
 @Component({
   selector: 'app-exepenses-list',
@@ -17,8 +16,8 @@ import { Exepense } from '@interfaces/expense.interface';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
-  displayedColumns = ['date', 'item', 'requisitor', 'type', 'establishment', 'amount', 'action'];
-  transactions: Exepense[] = [
+  displayedColumns = ['data', 'item', 'solicitante', 'tipo', 'estabelecimento', 'valor', 'acao'];
+  transactions: Despesa[] = [
   ];
 
   /** Gets the total cost of all transactions. */
@@ -29,7 +28,7 @@ export class ListComponent {
   onAdd() {
   }
 
-  onEdit(transaction: Exepense) {
+  onEdit(transaction: Despesa) {
   }
 
 }

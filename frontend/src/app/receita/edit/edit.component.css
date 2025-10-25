@@ -1,0 +1,27 @@
+.div-edit-receive {
+    width: 60%;
+}
+
+.section-edit-receive {
+    text-align: left;
+
+    mat-form-field {
+        margin-left: 10px;
+    }
+
+    .descricao-field {
+        width: 66%;
+    }
+
+    .customer-field {
+        width: 70%;
+    }
+
+    .dia-faturamento-field {
+        width: 32%;
+    }
+
+    .amount-field {
+        width: 28%;
+    }
+}

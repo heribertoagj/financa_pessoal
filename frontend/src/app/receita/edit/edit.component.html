@@ -1,0 +1,75 @@
+<div class="container-default div-edit-receive mat-elevation-z2">
+    <div class="header">
+        <h2> {{action}} Receita</h2>
+        <hr>
+    </div>
+
+    <div class="section-edit-receive">
+        <div class="actions mat-elevation-z2">
+            <div class="filters"></div>
+            <div class="button-bar">
+                <button mat-mini-fab style="background-color: green; color: whitesmoke;" (click)="save()">
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button mat-mini-fab style="background-color: lightgray; color: whitesmoke;" (click)="goBack()">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="forms" [formGroup]="form">
+            <mat-form-field class="descricao-field">
+                <mat-label>Descrição</mat-label>
+                <input matInput placeholder="Descrição" formControlName="descricao" />
+                <mat-error *ngIf="isSubmitted && form.get('descricao')?.invalid">
+                    {{ descricaoErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="type-field">
+                <mat-label>Tipo</mat-label>
+                <mat-select formControlName="tipo">
+                    <mat-option *ngFor="let item of tipos" [value]="item">{{ item }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="isSubmitted && form.get('tipo')?.invalid">
+                    {{ tipoErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="customer-field">
+                <mat-label>Cliente</mat-label>
+                <mat-select formControlName="cliente">
+                    <mat-option *ngFor="let item of clientes" [value]="item">{{ item }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="isSubmitted && form.get('cliente')?.invalid">
+                    {{ clienteErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="dia-faturamento-field">
+                <mat-label>Dia faturamento</mat-label>
+                <input matInput type="text" maxlength="2" pattern="\d{1,2}" (keypress)="permitirApenasNumeros($event)"
+                    formControlName="diaFaturamento" />
+                <mat-error *ngIf="isSubmitted && form.get('diaFaturamento')?.invalid">
+                    {{ dataErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="amount-field">
+                <mat-label>Valor</mat-label>
+                <input matInput currencyMask placeholder="Valor" formControlName="valor" />
+                <mat-error *ngIf="isSubmitted && form.get('valor')?.invalid">
+                    {{ valorErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <section class="message">
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+            </div>
+
+            <div *ngIf="successMessage" class="success-message">
+                {{ successMessage }}
+            </div>
+        </section>
+    </div>

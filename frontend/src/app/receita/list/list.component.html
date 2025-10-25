@@ -1,24 +1,17 @@
 <div class="container-default mat-elevation-z8" tabindex="0">
   <div class="header">
-    <h2>Revenue</h2>
+    <h2>Receitas</h2>
     <hr />
   </div>
 
   <div class="actions mat-elevation-z4">
     <div class="filters">
-      <mat-form-field class="field" appearance="outline" >
-        <mat-label>Start date</mat-label>
+      <mat-form-field class="field" appearance="outline">
+        <mat-label>Mês referência</mat-label>
         <input matInput [matDatepicker]="pickerStart" formControlName="startDate" />
         <mat-datepicker-toggle matIconPrefix [for]="pickerStart">
         </mat-datepicker-toggle>
         <mat-datepicker #pickerStart></mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field  class="field" appearance="outline">
-        <mat-label>End date</mat-label>
-        <input matInput [matDatepicker]="pickerEnd" formControlName="endDate" />
-        <mat-datepicker-toggle matIconPrefix [for]="pickerEnd" />
-        <mat-datepicker #pickerEnd />
       </mat-form-field>
     </div>
 
@@ -42,37 +35,37 @@
         <td mat-footer-cell *matFooterCellDef>Total</td>
       </ng-container>
 
-      <!-- Date Column -->
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
+      <!-- Data Column -->
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef> Data </th>
         <td mat-cell *matCellDef="let transaction">{{ transaction.date | date }}</td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
 
-      <!-- Type Column -->
-      <ng-container matColumnDef="type">
-        <th class="header" mat-header-cell *matHeaderCellDef> Type </th>
+      <!-- Tipo Column -->
+      <ng-container matColumnDef="tipo">
+        <th class="header" mat-header-cell *matHeaderCellDef> Tipo </th>
         <td mat-cell *matCellDef="let transaction">{{ transaction.revenueType.dsRevenueType }}</td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
 
-      <!-- Customer Column -->
-      <ng-container matColumnDef="customer">
-        <th class="header" mat-header-cell *matHeaderCellDef> Source </th>
+      <!-- Cliente Column -->
+      <ng-container matColumnDef="cliente">
+        <th class="header" mat-header-cell *matHeaderCellDef> Fonte </th>
         <td mat-cell *matCellDef="let transaction">{{ transaction.revenueSource.dsRevenueSource }}</td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
 
-      <!-- Amount Column -->
-      <ng-container matColumnDef="amount">
-        <th class="header" mat-header-cell *matHeaderCellDef> Amount </th>
+      <!-- Valor Column -->
+      <ng-container matColumnDef="valor">
+        <th class="header" mat-header-cell *matHeaderCellDef> Valor </th>
         <td mat-cell *matCellDef="let transaction">{{ transaction.vlAmount | currency }}</td>
         <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
       </ng-container>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <!-- acao Column -->
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let transaction">
           <button mat-mini-fab class="small-icon-button" style="color: whitesmoke;" (click)="onEdit(transaction)">
             <mat-icon>folder</mat-icon>

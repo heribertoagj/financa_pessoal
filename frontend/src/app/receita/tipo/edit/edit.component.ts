@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, signal, Renderer2, ElementRef } from '@angular/core';
-import { Revenue } from '@interfaces/revenue.interface';
+import { Receita } from '@interfaces/receita.interface';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field'
 import { FormsModule, ReactiveFormsModule, Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -32,7 +32,7 @@ export class EditReceiveComponent implements OnInit {
   isSubmitted = false
   isLoading = false
 
-  revenue?: Revenue;
+  receita?: Receita;
   action?: string;
   
   types = ['Salary', 'Biling', 'Benefits'];
@@ -51,16 +51,16 @@ export class EditReceiveComponent implements OnInit {
     });
 
     const state = history.state;
-    this.revenue = state.revenue;
+    this.receita = state.receita;
     this.action = state.action;
 
     
-    if (this.revenue){
-      this.form.get('name')?.setValue(this.revenue.dsRevenue);
-      this.form.get('type')?.setValue(this.revenue.revenueType.dsRevenueType);   
-      this.form.get('customer')?.setValue(this.revenue.revenueSource.dsRevenueSource);
+    if (this.receita){
+      this.form.get('name')?.setValue(this.receita.dsReceita);
+      this.form.get('type')?.setValue(this.receita.tipoReceita.dsTipoReceita);   
+      this.form.get('customer')?.setValue(this.receita.fonteReceita.dsFonteReceita);
       this.form.get('date')?.setValue(new Date());
-      this.form.get('amount')?.setValue(this.revenue.vlAmount);
+      this.form.get('amount')?.setValue(this.receita.vlReceita);
     }
 
 

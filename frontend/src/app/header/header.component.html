@@ -16,18 +16,18 @@
 
     <div class="menu mat-elevation-z8" >
         <button mat-button (click)="onHome()">Dashboard</button>
-        <button mat-button [matMenuTriggerFor]="receivesMenu">Receives</button>
+        <button mat-button [matMenuTriggerFor]="receivesMenu">Receitas</button>
         <mat-menu #receivesMenu="matMenu" xPosition="before">
-            <button mat-menu-item (click)="onReceive()">Receives</button>
-            <button mat-menu-item>Customer</button>
-            <button mat-menu-item>Type</button>
+            <button mat-menu-item (click)="onReceive()">Receitas</button>
+            <button mat-menu-item>Clientes</button>
+            <button mat-menu-item>Tipo</button>
         </mat-menu>
-        <button mat-button [matMenuTriggerFor]="expensesMenu">Expenses</button>
+        <button mat-button [matMenuTriggerFor]="expensesMenu">Despesas</button>
         <mat-menu #expensesMenu="matMenu" xPosition="before">
-            <button mat-menu-item (click)="onExpense()">Expenses</button>
-            <button mat-menu-item>Requisitor</button>
-            <button mat-menu-item>Establishment</button>
-            <button mat-menu-item>Type</button>
+            <button mat-menu-item (click)="onExpense()">Despesas</button>
+            <button mat-menu-item>Solicitantes</button>
+            <button mat-menu-item>Estabelecimento</button>
+            <button mat-menu-item>Tipo</button>
         </mat-menu>
     </div>
 </div>

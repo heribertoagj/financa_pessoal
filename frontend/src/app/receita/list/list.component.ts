@@ -11,8 +11,8 @@ import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
 
 import { Router } from '@angular/router';
 
-import { Revenue } from '@interfaces/revenue.interface';
-import { revenueService } from '@service/revenue/revenueService';
+import { Receita } from '@interfaces/receita.interface';
+import { ReceitaService } from '@service/receita/receitaService';
 import { Response } from '@interfaces/response.interface';
 
 import _moment from 'moment';
@@ -39,24 +39,24 @@ export const MY_FORMATS = {
   styleUrl: './list.component.css'
 })
 export class ListComponent implements OnInit {
-  displayedColumns = ['item', 'date', 'type', 'customer', 'amount', 'action'];
-  transactions: Revenue[] = [];
+  displayedColumns = ['item', 'data', 'tipo', 'cliente', 'valor', 'acao'];
+  transactions: Receita[] = [];
 
   constructor(
     private route: Router,
-    private revenueService: revenueService) { }
+    private receitaService: ReceitaService) { }
 
   ngOnInit(): void {
-    this.loadRevenues()
+    this.loadReceitas()
   }
 
-  loadRevenues(): void {
+  loadReceitas(): void {
 
-    this.revenueService.find().subscribe({
+    this.receitaService.find().subscribe({
       next: result => {
         let response = result as Response
         if (response.code == 200){
-            this.transactions = response.data as Revenue[]
+            this.transactions = response.data as Receita[]
         }
       },
       error: err => {
@@ -66,14 +66,14 @@ export class ListComponent implements OnInit {
 
   /** Gets the total cost of all transactions. */
   getTotalCost() {
-    return this.transactions.map(t => t.vlAmount).reduce((acc, value) => acc + value, 0);
+    return this.transactions.map(t => t.vlReceita).reduce((acc, value) => acc + value, 0);
   }
 
   onAdd() {
-    this.route.navigate(['/receive/edit'], { state: { action: 'Add' } });
+    this.route.navigate(['/receita/edit'], { state: { action: 'Add' } });
   }
 
-  onEdit(transaction: Revenue) {
-    this.route.navigate(['/receive/edit'], { state: { receive: transaction, action: 'Edit' } });
+  onEdit(transaction: Receita) {
+    this.route.navigate(['/receita/edit'], { state: { receive: transaction, action: 'Edit' } });
   }
 }

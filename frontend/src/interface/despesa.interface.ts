@@ -1,4 +1,4 @@
-export interface Exepense {
+export interface Despesa {
     id: string;
     date: Date;
     name: string;
