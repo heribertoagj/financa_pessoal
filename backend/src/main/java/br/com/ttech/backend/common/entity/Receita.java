@@ -1,6 +1,7 @@
 package br.com.ttech.backend.common.entity;
 
 
+import br.com.ttech.backend.common.enums.TipoFaturamento;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +32,8 @@ public class Receita {
     private FonteReceita fonteReceita;
 
     private String dsReceita;
+
+    private TipoFaturamento tipoFaturamento;
 
     private Integer nuDiaFaturamento;
 
