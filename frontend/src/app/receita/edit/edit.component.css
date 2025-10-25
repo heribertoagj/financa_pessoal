@@ -13,15 +13,23 @@
         width: 66%;
     }
 
-    .customer-field {
-        width: 70%;
+    .cliente-field {
+        width: 98%;
+    }
+    
+    .tipo-receita-field {
+        width: 30%;
+    }
+
+    .tipo-faturamento-field {
+        width: 34%;
     }
 
     .dia-faturamento-field {
         width: 32%;
     }
 
-    .amount-field {
+    .valor-field {
         width: 28%;
     }
 }

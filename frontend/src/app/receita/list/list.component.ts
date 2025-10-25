@@ -52,16 +52,6 @@ export class ListComponent implements OnInit {
 
   loadReceitas(): void {
 
-    this.receitaService.find().subscribe({
-      next: result => {
-        let response = result as Response
-        if (response.code == 200){
-            this.transactions = response.data as Receita[]
-        }
-      },
-      error: err => {
-      }
-    })
   }
 
   /** Gets the total cost of all transactions. */

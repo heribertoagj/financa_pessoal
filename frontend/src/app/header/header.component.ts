@@ -40,10 +40,10 @@ export class HeaderComponent implements OnInit {
   }
 
   onReceive(){  
-    this.router.navigate(['receive/list'])
+    this.router.navigate(['receita/list'])
   }
 
   onExpense(){  
-    this.router.navigate(['expense/list'])
+    this.router.navigate(['despesa/list'])
   }
 }

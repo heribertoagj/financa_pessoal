@@ -26,16 +26,16 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="type-field">
-                <mat-label>Tipo</mat-label>
-                <mat-select formControlName="tipo">
+            <mat-form-field class="tipo-receita-field">
+                <mat-label>Tipo de receita</mat-label>
+                <mat-select formControlName="tipoReceita">
                     <mat-option *ngFor="let item of tipos" [value]="item">{{ item }}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="isSubmitted && form.get('tipo')?.invalid">
-                    {{ tipoErrorMessage() }}
+                <mat-error *ngIf="isSubmitted && form.get('tipoReceita')?.invalid">
+                    {{ tipoReceitaErrorMessage() }}
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="customer-field">
+            <mat-form-field class="cliente-field">
                 <mat-label>Cliente</mat-label>
                 <mat-select formControlName="cliente">
                     <mat-option *ngFor="let item of clientes" [value]="item">{{ item }}</mat-option>
@@ -45,12 +45,24 @@
                 </mat-error>
             </mat-form-field>
 
+            <mat-form-field class="tipo-faturamento-field">
+                <mat-label>Tipo faturamento</mat-label>
+                <mat-select formControlName="tipoFaturamento">
+                    <mat-option *ngFor="let item of tiposFaturamento" [value]="item[1].id">
+                        {{ item[1].descricao }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="isSubmitted && form.get('tipoFaturamento')?.invalid">
+                    {{ tipoFaturamentoErrorMessage() }}
+                </mat-error>
+            </mat-form-field>
+
             <mat-form-field class="dia-faturamento-field">
                 <mat-label>Dia faturamento</mat-label>
                 <input matInput type="text" maxlength="2" pattern="\d{1,2}" (keypress)="permitirApenasNumeros($event)"
                     formControlName="diaFaturamento" />
                 <mat-error *ngIf="isSubmitted && form.get('diaFaturamento')?.invalid">
-                    {{ dataErrorMessage() }}
+                    {{ diaFaturamentoErrorMessage() }}
                 </mat-error>
             </mat-form-field>
 

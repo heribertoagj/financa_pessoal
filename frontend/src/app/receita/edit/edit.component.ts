@@ -11,6 +11,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Utils } from '@commons/utils';
+import { TipoFaturamentoEnum } from '@commons/enums/tipoFaturamento';
 
 @Component({
   selector: 'app-edit',
@@ -38,15 +39,18 @@ export class EditComponent implements OnInit {
 
   tipos = ['Salario', 'Fatura', 'Benefícios'];
   clientes = ['SIS', 'Belago', 'Stefanini', 'Procics'];
+  tiposFaturamento  = Object.entries(TipoFaturamentoEnum);
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
 
+
     this.form = this.fb.group({
       descricao: ['', Validators.required],
-      tipo: ['', Validators.required],
+      tipoReceita: ['', Validators.required],
       cliente: ['', Validators.required],
+      tipoFaturamento: ['', Validators.required],
       diaFaturamento: ['', Validators.required],
       valor: ['', Validators.required]
     });
@@ -95,9 +99,9 @@ export class EditComponent implements OnInit {
     return '';
   }
 
-  tipoErrorMessage() {
-    if (this.form.get('tipo')?.hasError('required')) {
-      return 'Tipo é obrigatório';
+  tipoReceitaErrorMessage() {
+    if (this.form.get('tipoReceita')?.hasError('required')) {
+      return 'Tipo receita é obrigatório';
     }
     return '';
   }
@@ -109,7 +113,14 @@ export class EditComponent implements OnInit {
     return '';
   }
 
-  dataErrorMessage() {
+  tipoFaturamentoErrorMessage() {
+    if (this.form.get('tipoFaturamento')?.hasError('required')) {
+      return 'Tipo de faturamento é obrigatório';
+    }
+    return '';
+  }
+
+  diaFaturamentoErrorMessage() {
     if (this.form.get('diaFaturamento')?.hasError('required')) {
       return 'Dia do faturamento é obrigatório';
     }
