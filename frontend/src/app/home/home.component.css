@@ -1,0 +1,9 @@
+.home-container {
+    width: 100%;
+    display: flex;
+
+    .component-container {
+        width: 50%;
+        padding: 0 1px;
+    }
+}

@@ -1,13 +1,53 @@
-.mat-mdc-table-sticky {
-    background-color: var(--secondary-color);
+table {
+    thead {
+        tr {
+            background-color: rgba(0, 128, 0, 0.3) !important;
+        }
+    }
+
 }
 
-.mat-mdc-table .mat-mdc-header-cell {
-    background-color: #C0C0C0;
-    color: white;
-}
+.filters {
+    display: flex;
+    width: 260px;
+    min-width: 260px;
+    margin: 0 0px;
 
-.date-filter {
-    width: 28%;
-    margin: 0 5px;
+    ::ng-deep mat-form-field {
+        height: 40px !important;
+    }
+
+    ::ng-deep .mat-mdc-form-field-wrapper {
+        height: 45px !important;
+    }
+
+    ::ng-deep .mat-mdc-form-field-flex {
+        height: 35px !important;
+        align-items: center !important;
+    }
+
+    ::ng-deep .mat-mdc-form-field-infix {
+        min-height: 30px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+
+    ::ng-deep .mat-mdc-text-field-wrapper {
+        height: 30px !important;
+    }
+
+    ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+        display: none !important;
+    }
+
+    ::ng-deep input {
+        height: 20px !important;
+        font-size: 14px !important;
+        line-height: 20px !important;
+    }
+
+    ::ng-deep mat-label {
+        font-size: 14px !important;
+        line-height: 20px !important;
+    }
 }

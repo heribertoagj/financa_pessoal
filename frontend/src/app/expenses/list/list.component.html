@@ -1,21 +1,23 @@
-<section class="mat-elevation-z8" tabindex="0">
-    <div style="padding: 0 12px;">
+<div class="container-default mat-elevation-z8">
+    <div>
         <h2>Expenses</h2>
         <hr />
     </div>
 
     <div class="actions mat-elevation-z4">
-        <button mat-mini-fab style="background-color: green; color: whitesmoke;" (click)="onAdd()">
-            <mat-icon>add</mat-icon>
-        </button>
-        <button mat-mini-fab style="background-color: lightgray; color: whitesmoke;">
-            <mat-icon>download</mat-icon>
-        </button>
+        <div class="button-bar">
+            <button mat-mini-fab style="background-color: lightgray; color: whitesmoke;">
+                <mat-icon>search</mat-icon>
+            </button>
+            <button mat-mini-fab style="background-color: green; color: whitesmoke;" (click)="onAdd()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
     </div>
 
     <!-- Div para controlar o scroll -->
     <div class="table-wrapper">
-        <table mat-table [dataSource]="transactions">
+        <table mat-table [dataSource]="transactions" class="expenses">
             <!-- Date Column -->
             <ng-container matColumnDef="date">
                 <th mat-header-cell *matHeaderCellDef> Date </th>
@@ -79,4 +81,4 @@
             <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
         </table>
     </div>
-</section>
+</div>

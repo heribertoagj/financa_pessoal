@@ -1,7 +1,7 @@
-<div class="login-container container">
+<div class="container-default login-container mat-elevation-z2">
   <h2>Bem-vindo à TTech</h2>
 
-  <mat-form-field style="width: 100%;">
+  <mat-form-field>
     <mat-label>Enter your login</mat-label>
     <input matInput placeholder="Login" [formControl]="username" (blur)="updateErrorMessage()" required />
     @if (username.invalid) {
@@ -9,7 +9,7 @@
     }
   </mat-form-field>
 
-  <mat-form-field style="width: 100%;">
+  <mat-form-field>
     <mat-label>Enter your password</mat-label>
     <input matInput type="password" [formControl]="password" required />
     @if (password.invalid) {

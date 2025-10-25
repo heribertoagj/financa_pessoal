@@ -60,8 +60,6 @@ export class ListComponent implements OnInit {
         }
       },
       error: err => {
-        alert("err: " + JSON.stringify(err))
-
       }
     })
   }

@@ -21,38 +21,24 @@
 
 /* 3. Body */
 body {
-  margin: 0; 
-  padding: 5px;
-  line-height: 1.6;
-  transition: background-color 0.3s ease-in-out;
-  font-size: 16px;
-  font-family: var(--font-family);
-  color: var(--text-color);
-  background-color: var(--secondary-color);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
 }
 
-
-
 h2 {
-  margin: 0;
+  margin: 10px;
   padding: 15px 5px 0px 5px;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  color: black;
-  opacity: 0.75;
+  color: var(--primary-color);
+  opacity: 0.9;
   text-align: left;
 }
 
 hr {
-  margin: 5px;
-}
-
-button {
-  border: none;
-  font-size: 14px;
-  padding: 6px 20px;
-  border-radius: 6px;
-  margin: 15px auto;
+  margin: 10px;
 }
 
 a {
@@ -61,6 +47,16 @@ a {
   font-size: 14px;
   color: #2980b9;
   text-decoration: none;
+}
+
+.container-default {
+  margin: 0;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #f8f9fa;
 }
 
 a:hover {
@@ -85,16 +81,6 @@ a:hover {
   font-size: 16px;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  background-color: #f8f9fa;
-}
-
 .small-icon-button {
   width: 24px !important;
   height: 24px !important;
@@ -106,55 +92,88 @@ a:hover {
   margin: 5px !important;
   opacity: 0.8;
 
-  & > *[role=img] {
-     width: 16px;
-     height: 16px;
-     font-size: 16px;
+  &>*[role=img] {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
 
-     svg {
-        width: 16px;
-        height: 16px;
-     }
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   .mat-mdc-button-touch-target {
-     width: 24px !important;
-     height: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 
-.actions{
-  display: flex; 
-  justify-content: space-between; 
+.actions {
+  display: flex;
   margin: 10px 15px 10px 15px;
-  height: 65px;
-  padding: 0 10px;
+  height: 55px;
+  padding: 10px;
   border: none;
+  overflow: auto;
+
+  .button-bar {
+    display: flex;
+    button {
+      height: 35px;
+      width: 35px;
+      padding: 0;
+      margin: 0px 3px 0 0;
+      overflow: visible;
+    }
+  }
 }
 
-.actions .filters {
-  display: flex;
-}
-.actions .buttons {
-  display: flex;
-}
-
-.actions button{ 
-  padding: 0 3px;
-  margin: 5px 5px 0 0;
-  overflow: visible;
+.forms {
+  margin: 10px 15px 10px 15px;
+  height: auto;
+  padding: 10px;
+  border: none;
+  overflow: auto;
 }
 
 .table-wrapper {
-  padding: 0 14px 0 14px; /* Padding lateral */
-  max-height: 300px; /* Altura máxima */
-  overflow-y: auto; /* Rolagem vertical */
-  overflow-x: auto; /* Rolagem horizontal (se necessário) */
-}
-  table {
-  width: 100%; /* Garante que a tabela use 100% da largura disponível */
+  padding: 0 14px 0 14px;
+  /* Padding lateral */
+  max-height: 330px;
+  /* Altura máxima */
+  overflow-y: auto;
+  /* Rolagem vertical */
+  overflow-x: auto;
+  /* Rolagem horizontal (se necessário) */
+
+  .revenue {
+    thead {
+      tr {
+        background-color: rgba(0, 128, 0, 0.3);
+        color: whitesmoke;
+      }
+    }
+  }
+
+  .expenses {
+    thead {
+      tr {
+        background-color: rgba(255, 0, 0, 0.3);
+        color: whitesmoke;
+      }
+    }
+  }
 }
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
-  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+table {
+  width: 100%;
+  /* Garante que a tabela use 100% da largura disponível */
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  white-space: nowrap;
+  /* Impede que o texto quebre em várias linhas */
 }

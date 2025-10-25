@@ -1,10 +1,10 @@
-<div class="container div-edit-receive mat-elevation-z2" [formGroup]="form">
+<div class="container-default div-edit-receive mat-elevation-z2">
     <div class="header">
         <h2> {{action}} Receive</h2>
         <hr>
     </div>
 
-    <section class="section-edit-receive">
+    <div class="section-edit-receive">
         <div class="actions mat-elevation-z2">
             <div class="filters"></div>
             <div class="buttons">
@@ -16,7 +16,7 @@
                 </button>    
             </div>
         </div>
-        <div>
+        <div [formGroup]="form">
             <mat-form-field class="name-field">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Name" formControlName="name" />
@@ -67,8 +67,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
-    </section>
-
+    </div>
     <section class="message">
         <div *ngIf="errorMessage" class="error-message">
             {{ errorMessage }}

@@ -7,7 +7,7 @@ export class Utils {
 
     public static toShowError(reference:any, message:string){
         reference['errorMessage'] = message        
-        setTimeout(()=> reference['errorMessage']='', 1000)           
+        setTimeout(()=> reference['errorMessage']='', 5000)           
     }
 
     public static toShowSuccess(reference:any, message:string){

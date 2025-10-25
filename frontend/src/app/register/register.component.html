@@ -1,30 +1,74 @@
-<div class="register-container container">
-  <h2>Register</h2>
-  <hr>
-  <form (submit)="onRegister()">
-    <div class="form-row">
-      <input type="text" [(ngModel)]="name" placeholder="Nome Completo" name="name"
-        [ngClass]="{'error-border': nameError}" required>
-      <input type="email" [(ngModel)]="email" placeholder="E-mail" name="email" [ngClass]="{'error-border': emailError}"
-        required>
-    </div>
-    <div>
-      <input type="text" [(ngModel)]="login" placeholder="Login" name="login" [ngClass]="{'error-border': loginError}"
-        required>
-    </div>
-    <input type="password" [(ngModel)]="password" placeholder="Senha" name="password"
-      [ngClass]="{'error-border': passwordError}" required>
-    <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirme a Senha" name="confirmPassword"
-      [ngClass]="{'error-border': confirmPasswordError}" required>
-    <button type="submit">Cadastrar</button>
-  </form>
-  <!-- Mensagem de erro -->
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
+<div class="container-default register-container mat-elevation-z2">
+
+  <div class="header">
+    <h2>Register</h2>
+    <hr>
   </div>
 
-  <!-- Mensagem de sucesso -->
-  <div *ngIf="successMessage" class="success-message">
-    {{ successMessage }}
+  <div class="actions mat-elevation-z2">
+    <div class="button-bar">
+      <button mat-mini-fab style="background-color: green; color: whitesmoke;" (click)="onRegister()">
+        <mat-icon>done</mat-icon>
+      </button>
+      <button mat-mini-fab style="background-color: lightgray; color: whitesmoke;" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="forms" [formGroup]="form">
+    <mat-form-field class="name-field">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name">
+      <mat-error *ngIf="submited && form.get('name')?.invalid">
+        {{ nameErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="email-field">
+      <mat-label>E-mail</mat-label>
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error>
+        {{ emailErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="login-field">
+      <mat-label>Login</mat-label>
+      <input matInput placeholder="Login" formControlName="login">
+      <mat-error *ngIf="submited && form.get('login')?.touched && form.get('login')?.invalid">
+        {{ loginErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="password-field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Password" formControlName="password">
+      <mat-error *ngIf="submited && form.get('password')?.touched && form.get('password')?.invalid">
+        {{ passwordErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="password-field">
+      <mat-label>Confirm password</mat-label>
+
+      <input type="password" matInput placeholder="Confirm password" formControlName="confirmPassword">
+      <mat-error *ngIf="submited && form.get('confirmPassword')?.touched && form.get('confirmPassword')?.invalid">
+        {{ confirmPasswordErrorMessage() }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="message">
+    <!-- Mensagem de erro -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Mensagem de sucesso -->
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+
   </div>
 </div>

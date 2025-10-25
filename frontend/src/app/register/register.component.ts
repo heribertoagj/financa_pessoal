@@ -1,89 +1,89 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Utils } from '@commons/utils';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field'
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule,
+    MatLabel, MatInputModule,
+    MatIconModule, MatButtonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
 
+  form!: FormGroup;
 
+
+  submited: boolean = false
   successMessage: string = ''
   errorMessage: string = ''
 
 
-  name:String = ""
-  nameError:boolean = false
-
-  email:String= ""
-  emailError:boolean = false
-  
-  login:String = ""
-  loginError:boolean = false
-  
-  password:String = ""
-  passwordError:boolean = false
-  
-  confirmPassword:String = ""
-  confirmPasswordError:boolean = false
-
-  constructor(){}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      login: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    });
   }
 
-  onRegister(): void{
+  onRegister(): void {
+    this.submited = true
+    this.form.markAllAsTouched();
 
-
-    if (!this.validateFields()){
-      return
+    if (this.form.invalid) {
+      Utils.toShowError(this, 'Preencha todos os campos obrigatórios.')
+      return;
     }
-
-
-
-
   }
 
-  cleanErrors():void{
-    this.nameError = false
-    this.emailError = false
-    this.loginError = false
-    this.passwordError = false
-    this.confirmPasswordError = false
+  nameErrorMessage() {
+    if (this.form.get('name')?.hasError('required')) {
+      return 'Name is required';
+    }
+    return '';
   }
 
-  validateFields(): boolean{
-    this.cleanErrors()
-    
-    let existsError = false
-
-    if (!this.name){
-      this.nameError = existsError = true
+  emailErrorMessage() {
+    if (this.form.get('email')?.hasError('required')) {
+      return 'Email is required';
     }
+    return '';
+  }
 
-    if (!this.email){
-      this.emailError = existsError = true
+  loginErrorMessage() {
+    if (this.form.get('login')?.hasError('required')) {
+      return 'Login is required';
     }
+    return '';
+  }
 
-    if (!this.login){
-      this.loginError = existsError = true
+  passwordErrorMessage() {
+    if (this.form.get('password')?.hasError('required')) {
+      return 'Password is required';
     }
+    return '';
+  }
 
-    if (!this.password){
-      this.passwordError = existsError = true
+  confirmPasswordErrorMessage() {
+    if (this.form.get('confirmPassword')?.hasError('required')) {
+      return 'Confirm password is required';
     }
+    return '';
+  }
 
-    if (!this.confirmPassword){
-      this.confirmPasswordError = existsError = true
-    }
-
-    if (existsError) Utils.toShowError(this, 'Informar campos obrigatórios')
-    return !existsError
+  goBack() {
+    window.history.back();
   }
 }

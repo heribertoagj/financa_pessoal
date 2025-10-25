@@ -1,38 +1,30 @@
 .main-container {
-  margin: 0 auto; 
-  padding: 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  /* Organiza os filhos verticalmente */
+  height: 100vh;
+  background-color: var(--secondary-color);
 }
 
 .top-container {
-  display: flex;
-  flex-direction: column;
   height: 15vh;
-  background-color: var(--secondary-color);
-  overflow: visible; 
+  width: 100%;
+  background-color: transparent;
+  overflow: visible;
 }
 
 .center-container {
+  flex: 1;
+  padding: 10px;
   display: flex;
-  flex-direction: column;
-  height: 80vh;
-  background-color: var(--secondary-color);
-  overflow: hidden; /* Garante que o conteúdo não ultrapasse o topo */
-}
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  overflow: hidden;
 
-.header {
-  text-align: center;
-  color: gray;
-}
-
-/* Estilo para a área central */
-.content {
-  margin-top: 16px;
-  padding: 5px;
-  flex-grow: 1;
-  overflow-y: auto;
+  .content {
+    margin: 0 auto;
+    min-width: 400px;
+    width: 100%;
+  }
 }

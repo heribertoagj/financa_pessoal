@@ -3,6 +3,11 @@
     margin: auto;
 }
 
+.header {
+  text-align: center;
+  color: gray;
+}
+
 .banner{
     padding: 5px 5px;
     display: flex;

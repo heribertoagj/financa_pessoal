@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Utils } from '@commons/utils';
 
-
 @Component({
   selector: 'app-edit',
   standalone: true,
